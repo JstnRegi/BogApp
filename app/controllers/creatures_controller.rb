@@ -13,13 +13,27 @@ class CreaturesController < ApplicationController
     redirect_to "/creatures/#{creature.id}"
   end
 
+  #used for displaying the newly created creature
   def show
   	id = params[:id]
   	@creature = Creature.find(id)
   end
 
+  #used for displaying the edited creature
   def edit
   	id = params[:id]
   	@creature = Creature.find(id)
+  end
+
+  def update
+  	creature_id = params[:id]
+  	creature = Creature.find(creature_id)
+
+  	#gets updated data
+	updated_attributes = params.require(:creature).permit(:name, :description)
+	#updates the creature
+	creature.update_attributes(updated_attributes)
+
+	redirect_to "/creatures/#{creature.id}"
   end
 end
