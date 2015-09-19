@@ -1,12 +1,16 @@
 Rails.application.routes.draw do
-  get '/' => 'creatures#index'
-  get '/creatures' => 'creatures#index'
-  get '/creatures/new' => 'creatures#new'
-  post '/creatures' => 'creatures#create'
+  #serves up our index.html.erb
+  get '/' => 'creatures#index', :as => 'creatures'
+  get '/creatures' => 'creatures#index', :as => 'creatures'
 
-  #rake routes to check these routes
-  get '/creatures/:id' => 'creatures#show'
-  get '/creatures' => 'creatures#create'
+  #routes for user to create a creature then view it
+  get '/creatures/new' => 'creatures#new', :as 'new_creature'
+  post '/creatures' => 'creatures#create'
+  get '/creatures/:id' => 'creatures#show', :as 'creature'
+  
+  #route to edit a creature
+  get '/creatures/:id/edit' => 'creatures#show', :as 'edit_creature'
+
 end
 
 
