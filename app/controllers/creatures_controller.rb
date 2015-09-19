@@ -12,4 +12,9 @@ class CreaturesController < ApplicationController
     Creature.create(new_creature)
     redirect_to "/creatures"
   end
+
+  def show
+  	id = params[:id]
+  	@creature = Creature.find(id)
+  end
 end
