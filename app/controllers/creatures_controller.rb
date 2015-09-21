@@ -25,7 +25,7 @@ class CreaturesController < ApplicationController
   	@creature = Creature.find(id)
   end
 
-  #used for updating a creature in the form and redirecting the page to show
+  #used for updating a creature in the req and redirecting the page to show
   def update
   	creature_id = params[:id]
   	creature = Creature.find(creature_id)
@@ -38,6 +38,7 @@ class CreaturesController < ApplicationController
 	redirect_to "/creatures/#{creature.id}"
   end
 
+  #destroys targeted creature in the req and redirects to view creatures
   def destroy
   	id = params[:id]
   	creature = Creature.find(id)
